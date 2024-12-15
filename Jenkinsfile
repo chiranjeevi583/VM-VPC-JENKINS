@@ -3,13 +3,13 @@ pipeline {
   stages {
     stage('Create VPC') {
       steps {
-        sh 'gcloud compute networks create test-custom-jenkins-vpc --gcp-practice-space-436907 --subnet-mode=custom'
+        sh 'gcloud compute networks create test-custom-jenkins-vpc --gcp-practice-space --subnet-mode=custom'
       }
     }
     stage('Create Subnets') {
       steps {
         sh 'sleep 40'
-        sh 'gcloud compute networks subnets create test-cmd-subnets --gcp-practice-space-436907 --range=10.0.0.0/24 --network=test-custom-jenkins-vpc --region=us-central1'
+        sh 'gcloud compute networks subnets create test-cmd-subnets --gcp-practice-space --range=10.0.0.0/24 --network=test-custom-jenkins-vpc --region=us-central1'
       }
     }
     stage('Create Instance with VPC') {
